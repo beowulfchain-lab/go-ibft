@@ -1,8 +1,8 @@
 package core
 
 import (
-	"github.com/0xPolygon/go-ibft/messages"
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/beowulfchain-lab/go-ibft/messages"
+	"github.com/beowulfchain-lab/go-ibft/messages/proto"
 )
 
 // MessageConstructor defines a message constructor interface

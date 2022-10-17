@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/0xPolygon/go-ibft/messages"
-	"github.com/0xPolygon/go-ibft/messages/proto"
+	"github.com/beowulfchain-lab/go-ibft/messages"
+	"github.com/beowulfchain-lab/go-ibft/messages/proto"
 )
 
 type Logger interface {
@@ -124,11 +124,13 @@ func (i *IBFT) startRoundTimer(ctx context.Context, round uint64) {
 	defer i.wg.Done()
 
 	var (
-		duration     = int(i.baseRoundTimeout)
-		roundFactor  = int(math.Pow(float64(2), float64(round)))
-		roundTimeout = time.Duration(duration * roundFactor)
+		duration    = int(i.baseRoundTimeout)
+		roundFactor = int(math.Pow(float64(2), float64(round)))
 	)
-
+	if roundFactor > 60 {
+		roundFactor = 60
+	}
+	var roundTimeout = time.Duration(duration * roundFactor)
 	//	Create a new timer instance
 	timer := time.NewTimer(roundTimeout + i.additionalTimeout)
 

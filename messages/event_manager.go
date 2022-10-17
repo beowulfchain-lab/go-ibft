@@ -1,10 +1,11 @@
 package messages
 
 import (
-	"github.com/0xPolygon/go-ibft/messages/proto"
-	"github.com/google/uuid"
 	"sync"
 	"sync/atomic"
+
+	"github.com/beowulfchain-lab/go-ibft/messages/proto"
+	"github.com/google/uuid"
 )
 
 type eventManager struct {
