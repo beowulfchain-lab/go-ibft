@@ -127,7 +127,7 @@ func (i *IBFT) startRoundTimer(ctx context.Context, round uint64) {
 		duration    = int(i.baseRoundTimeout)
 		roundFactor = int(math.Pow(float64(2), float64(round)))
 	)
-	if roundFactor > 60 {
+	if roundFactor > 60 { // 10 minute
 		roundFactor = 60
 	}
 	var roundTimeout = time.Duration(duration * roundFactor)
